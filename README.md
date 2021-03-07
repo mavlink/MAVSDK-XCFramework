@@ -9,7 +9,7 @@ Swift Package distribution of the pre-compiled mavsdk_server.xcframework found i
 #### Limitations
 
 - Requires Xcode 12.0+ to import Swift 5.3.
-- mavsdk_server.xcframework is currently only supported on iOS and MacOS.
+- `mavsdk_server.xcframework` is currently only supported on iOS and MacOS.
 
 #### `Package.swift` Manifest
 ```
@@ -36,13 +36,13 @@ let package = Package(
 
 ## Contributing
 
-Directions to generate the mavsdk_server.xcframework can be found [here](https://mavsdk.mavlink.io/develop/en/contributing/build.html)
+Directions to generate the `mavsdk_server.xcframework` can be found [here](https://mavsdk.mavlink.io/develop/en/contributing/build.html)
 
-### Setup
+### Environment Setup
 
 1. Install [Xcode](https://developer.apple.com/xcode/)
 
-2. Install CMake with [HomeBrew](https://brew.sh/)
+2. Install cmake with [HomeBrew](https://brew.sh/)
 ```
 $ brew install cmake
 ```
@@ -71,9 +71,10 @@ $ git clone https://github.com/mavlink/MAVSDK.git
 $ cd MAVSDK
 ```
 
-2.  Initialize submodules
+2. Checkout the latest release (such as `v0.37.0`) and initialize submodules
 
 ```git
+$ git switch -c tags/v0.37.0
 $ git submodule --init --recursive
 ```
 
@@ -98,7 +99,7 @@ $ cmake --build build/ios -j 2
 ```
 $ export SDKROOT=$(xcrun --sdk iphonesimulator --show-sdk-path)
 
-$ $ cmake -DENABLE_STRICT_TRY_COMPILE=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=$(pwd)/tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -DDEPLOYMENT_TARGET=11.0 -DBUILD_MAVSDK_SERVER=ON -DBUILD_SHARED_LIBS=OFF -DWERROR=OFF -Bbuild/ios_simulator -H.
+$ cmake -DENABLE_STRICT_TRY_COMPILE=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=$(pwd)/tools/ios.toolchain.cmake -DPLATFORM=SIMULATOR64 -DDEPLOYMENT_TARGET=11.0 -DBUILD_MAVSDK_SERVER=ON -DBUILD_SHARED_LIBS=OFF -DWERROR=OFF -Bbuild/ios_simulator -H.
 
 $ cmake --build build/ios_simulator -j 2
 ```
@@ -109,7 +110,7 @@ $ cmake --build build/ios_simulator -j 2
 bash src/mavsdk_server/tools/package_mavsdk_server_framework.bash
 ```
 
-5. The `mavsdk_server.xcframework` output can now be found in `/build`. Drag-and-drop the 
+5. The `mavsdk_server.xcframework` output can now be found in the */build* directory. 
 
 ### Extending `MAVSDK`
 
