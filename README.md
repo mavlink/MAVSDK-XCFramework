@@ -1,6 +1,6 @@
 # MAVSDK-XCFramework
 
-Swift Package distribution of the pre-compiled mavsdk_server.xcframework found in [MAVSDK Releases](https://github.com/mavlink/MAVSDK/releases)
+Swift Package distribution of the pre-compiled `mavsdk_server.xcframework` found in [MAVSDK Releases](https://github.com/mavlink/MAVSDK/releases)
 
 ## Installation
 
@@ -8,7 +8,7 @@ Swift Package distribution of the pre-compiled mavsdk_server.xcframework found i
 
 #### Limitations
 
-- Requires Xcode 12.0+ to import Swift 5.3.
+- Requires Xcode 12.0+ to use Swift 5.3.
 - `mavsdk_server.xcframework` is currently only supported on iOS and MacOS.
 
 #### `Package.swift` Manifest
@@ -75,7 +75,7 @@ $ cd MAVSDK
 
 ```git
 $ git switch -c tags/v0.37.0
-$ git submodule --init --recursive
+$ git submodule update --init --recursive
 ```
 
 3. Build `mavsdk_server.framework` per platform (based on the [MAVSDK GitHub CI/CD workflows](https://github.com/mavlink/MAVSDK/blob/develop/.github/workflows/main.yml))
@@ -107,20 +107,20 @@ $ cmake --build build/ios_simulator -j 2
 4. Package each `mavsdk_server.framework` binary into a single multi-platform `mavsdk_server.xcframework`
 
 ```
-bash src/mavsdk_server/tools/package_mavsdk_server_framework.bash
+$ bash src/mavsdk_server/tools/package_mavsdk_server_framework.bash
 ```
 
 5. The `mavsdk_server.xcframework` output can now be found in the */build* directory. 
 
 ### Extending `MAVSDK`
 
-Watch [this video](https://www.youtube.com/watch?v=T1orxSyqDzI) on how to extend fesatures in `MAVSDK`.
+Watch [this video](https://www.youtube.com/watch?v=T1orxSyqDzI) on how to extend features in [`MAVSDK`](https://github.com/mavlink/MAVSDK).
 
 ### Testing `MAVSDK-XCFramework`
 
-Use these steps to test updates `mavsdk_server.xcframework` when sourcing the  `MAVSDK-XCFramework` Swift Package locally.
+Use these steps to test updates `mavsdk_server.xcframework` when using a local `MAVSDK-XCFramework` Swift Package.
 
-1. Open the `MAVSDK-XCFramework` directory in Finder and then drag-and-drop it into */Sources/MAVSDK-XCFramework*.
+1. Create directory path *MAVSDK-XCFramework/Sources/MAVSDK-XCFramework*, then open `mavsdk_server.xcframework` in Finder and then drag-and-drop it into the new directory under *MAVSDK-XCFramework/Sources/MAVSDK-XCFramework*.
 
 2. Adjust the `Package.swift` manifest file in `MAVSDK-XCFramework` to reference the new local `mavsdk_server.xcframework`.
 
@@ -215,4 +215,4 @@ let package = Package(
 
 4. Commit the new `Package.swift` to a GitHub repositiory.
 
-5.  Use the new custom `MAVSDK-XCFramework` binary package (usage details [above](#Installation)) in your project.
+5.  Use the new `MAVSDK-XCFramework` binary package (details [above](#packageswift-manifest)) in your project.
